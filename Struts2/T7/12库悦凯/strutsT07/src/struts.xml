@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="349859372539"></constant>
+	
+	<package name="filemanager" extends="struts-default">
+		<action name="file" class="com.qhit.lh.gr3.kyk.t7.action.FileAction">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">.txt,.jpg,.png</param>
+				<param name="fileUpload.maximumSize">3876582365</param>
+			</interceptor-ref>
+  			<result name="uploadSuccess">/jsp/allFile.jsp</result>
+  			<result name="input">index.jsp</result>
+  			<result name="down" type="stream">
+  				<param name="contentType">application/octet-stream</param>
+  				<param name="inputName">downfile_is</param>
+  				<param name="contentDisposition">filename="${downfile_name}"</param>
+  			</result>
+    	</action>
+	</package>
+</struts>
