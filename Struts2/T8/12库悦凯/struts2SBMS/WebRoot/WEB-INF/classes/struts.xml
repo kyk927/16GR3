@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="349859"></constant>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="*User" class="com.qhit.lh.gr3.kyk.sbms.action.UserAction" method="{1}">
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">.txt,.jpg,.png</param>
+				<param name="fileUpload.maximumSize">38765</param>
+			</interceptor-ref>
+  			<result name="input">index.jsp</result>
+  			<result name="loginSuccess">/jsp/admin_index.jsp</result>
+  			<result name="listUser">/jsp/userAdmin.jsp</result>
+    		<result name="uploadSuccess" type="chain">addUser</result>
+    		<result name="addFile">/jsp/userAdd.jsp</result>
+    		<result name="addSuccess" type="redirectAction">getAllUser</result>
+    	</action>
+	</package>
+</struts>
