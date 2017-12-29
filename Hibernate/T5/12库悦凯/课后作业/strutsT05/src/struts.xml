@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+	<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+	<package name="usermanager" extends="default">
+		<action name="*User" class="com.kyk.t5.action.UserAction" method="{1}">
+    		<result name="listUser">tjyh.jsp</result>
+    		<result name="toAll" type="redirectAction">getAllUser</result>
+    		<result name="toUpdate">/jsp/updateUser.jsp</result>
+    	</action>
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.custom.i18n.resources" value="global"/>
+    <package name="usermanager" extends="struts-default">
+    	<action name="locall" class="com.kyk.t6.action.LocalAction">
+    		<result name="success">/jsp/login.jsp</result>
+    	</action>
+    	
+    	<action name="*User" class="com.kyk.t6.action.UserAction" method="{1}">
+    		<result name="input">/jsp/login.jsp</result>
+    		<result name="loginSuccess">/jsp/welcome.jsp</result>
+    	</action>
+    	
+    </package>
+</struts>
